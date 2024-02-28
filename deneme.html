@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Adam Asmaca Oyunu</title>
+</head>
+<style>
+    body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+#word-container {
+  margin-top: 20px;
+  font-size: 24px;
+}
+
+#hangman-images {
+  margin-top: 20px;
+}
+
+#hangman-images img {
+  max-width: 100%;
+  height: auto;
+}
+
+#guess-container {
+  margin-top: 20px;
+}
+
+#message-container {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: green;
+}
+
+</style>
+<body>
+  <div id="word-container">
+    <!-- Kelime buraya gelecek -->
+  </div>
+  <div id="hangman-images">
+    <!-- Asılan adamın durumu buraya gelecek -->
+  </div>
+  <div id="guess-container">
+    <input type="text" id="guess-input" placeholder="Bir harf tahmin et">
+    <button onclick="guess()">Tahmin Et</button>
+  </div>
+  <div id="message-container">
+    <p id="message"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<script>
+    const words = ["javascript", "programming", "hangman", "web", "developer"];
+let selectedWord = "";
+let guessedWord = [];
+let incorrectGuesses = 0;
+
+function startGame() {
+  selectedWord = words[Math.floor(Math.random() * words.length)];
+  guessedWord = Array(selectedWord.length).fill('_');
+  incorrectGuesses = 0;
+  updateDisplay();
+}
+
+function guess() {
+  const guessInput = document.getElementById("guess-input");
+  const guessedLetter = guessInput.value.toLowerCase();
+
+  if (guessedLetter && guessedLetter.length === 1) {
+    if (selectedWord.includes(guessedLetter)) {
+      for (let i = 0; i < selectedWord.length; i++) {
+        if (selectedWord[i] === guessedLetter) {
+          guessedWord[i] = guessedLetter;
+        }
+      }
+    } else {
+      incorrectGuesses++;
+    }
+
+    guessInput.value = "";
+    updateDisplay();
+    checkGameStatus();
+  }
+}
+
+function updateDisplay() {
+  document.getElementById("word-container").textContent = guessedWord.join(" ");
+  document.getElementById("hangman-images").innerHTML = `<img src="hangman${incorrectGuesses}.png" alt="Hangman">`;
+}
+
+function checkGameStatus() {
+  const messageContainer = document.getElementById("message-container");
+  if (guessedWord.join("") === selectedWord) {
+    messageContainer.textContent = "Tebrikler! Kelimeyi doğru tahmin ettiniz!";
+  } else if (incorrectGuesses === 6) {
+    messageContainer.textContent = `Üzgünüm! Doğru kelime: ${selectedWord}`;
+  }
+}
+
+startGame();
+
+</script>
