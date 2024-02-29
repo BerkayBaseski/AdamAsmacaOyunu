@@ -62,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="password" name="password" id="password" placeholder="Şifre" /><i class="fa fa-eye"
                     id="togglePassword"></i>
                 <a href="signin.html">Yeni hesap oluştur.</a>
+                <a href="forgotpassword.php">Şifreni mi unuttun?</a>
                 <a href="guest.html">Ya da Misafir olarak Oyna.</a>
                 <button type="submit">Giriş Yap</button>
                 <!-- Hata mesajını görüntüle -->

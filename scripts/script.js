@@ -6,7 +6,7 @@ const gameModal = document.querySelector(".game-modal");
 const playAgainBtn = gameModal.querySelector("button");
 const totalPointsDisplay = document.getElementById("totalPointsDisplay");
 
-// Değişkelnler
+// Değişkenler
 let currentWord, correctLetters, wrongGuessCount, roundsRemaining, totalPoints;
 const maxGuesses = 6;
 const totalRounds = 10; // Toplam 10 tur oynanacak
@@ -132,7 +132,7 @@ const initGame = (button, clickedLetter) => {
         wrongGuessCount++;
         hangmanImage.src = `images/hangman-${wrongGuessCount}.svg`;
 
-        // Total puanı kooruma
+        // Total puanı koruma
         if (totalPoints > 0) {
             updateTotalPoints();
         }
@@ -177,3 +177,5 @@ playAgainBtn.addEventListener("click", () => {
         // Konsol kontrolü
     }
 });
+
+
