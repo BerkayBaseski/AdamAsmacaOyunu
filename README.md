@@ -1,5 +1,5 @@
 # AdamAsmacaOyunu
- HTML, CSS, JS ve girş kontrolleri PHP teknolojileri ile yapılmış adam asmaca oyunu 
+ HTML, CSS, JS ve giriş kontrolleri PHP teknolojileri ile yapılmış adam asmaca oyunu 
 
  ## Proje Resimleri
 1. ![Giriş Yap Sayfası](https://github.com/BerkayBaseski/AdamAsmacaOyunu/assets/132743890/b1903862-9643-4d69-b4fa-64f6852c6bc8)
